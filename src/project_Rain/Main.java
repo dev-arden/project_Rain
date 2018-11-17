@@ -7,12 +7,16 @@ public class Main {
 	
 	public static void main(String[] args) {
 		commonset = new ArrayList<Integer>();
-		
+		System.out.println("test");
 		int user1_check1 = -1000;
 		int user1_check2 = -1000;//값이 안바뀔경우 대비
 		
+		int user1set_size = 0;
+		
 		int user2_check1 = -1000;
 		int user2_check2 = -1000;//값이 안바뀔경우 대비
+		
+		int user2set_size = 0;
 		
 		line subway = new line();
 		subway.setLine();
@@ -34,6 +38,14 @@ public class Main {
 		//sc2.close();
 		String point2 = user2.userstation;
 		
+		
+		for(int i=0; i<subway.line1.size();i++){
+			if(subway.line1.get(i).name.contains("신도림")) {
+				System.out.println(i + "신도림 인덱스");
+			}
+		}
+		
+		
 		//user1이 선택한 것.
 		for(int i = 0 ; i < subway.line1.size() ; i++){
 			if(point1.equals(subway.line1.get(i).name)) {
@@ -50,24 +62,29 @@ public class Main {
 		}
 		else if(user1_check1 < 0) {
 			user1.userset.add(subway.line1.get(user1_check1+1).code);
-			user1_check1 = user1_check1 - 1;
+			user1set_size++;
+			//user1_check1 = user1_check1 - 1;
 		}
 		else if(user1_check1 == 0) {
 		//사용자가 선택한 역이 종점일 때	
 			user1.userset.add(subway.line1.get(user1_check1+1).code);
-			user1_check1 = user1_check1 - 1;
+			user1set_size++;
+			//user1_check1 = user1_check1 - 1;
 		}
 		else if(user1_check1 == subway.line1.size() - 1) {
 		//사용자가 선택한 역이 종점일 때
 			user1.userset.add(subway.line1.get(user1_check1-1).code);
-			user1_check1 = user1_check1 - 1;
+			user1set_size++;
+			//user1_check1 = user1_check1 - 1;
 		}
 		else {
 		//사용자가 선택한 역이 1호선에 있고 종점이 아닐 떄
 			user1.userset.add(subway.line1.get(user1_check1+1).code);
 			user1.userset.add(subway.line1.get(user1_check1-1).code);
+			user1set_size++;
+			user1set_size++;
 		//이 때는 앞으로 가도 되고 뒤로 가도 됨!!!!일단 -1로 앞으로 전진
-			user1_check1 = user1_check1 - 1;
+			//user1_check1 = user1_check1 - 1;
 		}
 	
 		//System.out.println("1의 두번째 첵원" + user1_check1);
@@ -87,24 +104,24 @@ public class Main {
 		}
 		else if(user1_check2 < 0) {
 			user1.userset.add(subway.line2.get(user1_check2+1).code);
-			user1_check2 = user1_check2 - 1;
+			//user1_check2 = user1_check2 - 1;
 		}
 		else if(user1_check2 == 0) {
 		//사용자가 선택한 역이 종점일 때
 			user1.userset.add(subway.line2.get(user1_check2+1).code);
-			user1_check2 = user1_check2 - 1;
+			//user1_check2 = user1_check2 - 1;
 		}
 		else if(user1_check2+1 == subway.line2.size() - 1) {
 		//사용자가 선택한 역이 종점일 때
 			user1.userset.add(subway.line2.get(user1_check2-1).code);
-			user1_check2 = user1_check2 - 1;
+			//user1_check2 = user1_check2 - 1;
 		}
 		else {
 		//사용자가 선택한 역이 2호선에 있고 종점이 아닐 때
 			user1.userset.add(subway.line2.get(user1_check2+1).code);
 			user1.userset.add(subway.line2.get(user1_check2-1).code);
 		//이 때는 앞으로 가도 되고 뒤로 가도 되고 일단 앞으로 가자.
-			user1_check2 = user1_check2 - 1;
+			//user1_check2 = user1_check2 - 1;
 		}
 		//System.out.println("1의 두번째 첵투" + user1_check2);
 		
@@ -130,24 +147,24 @@ public class Main {
 			}
 		else if(user2_check1 < 0) {
 			user2.userset.add(subway.line1.get(user2_check1+1).code);
-			user2_check1 = user2_check1 - 1;
+			//user2_check1 = user2_check1 - 1;
 		}
 		else if(user2_check1 == 0) {
 			//사용자가 선택한 역이 종점일 때
 			user2.userset.add(subway.line1.get(user2_check1+1).code);
-			user2_check1 = user2_check1 - 1;
+			//user2_check1 = user2_check1 - 1;
 		}
 		else if(user2_check1+1 == subway.line1.size() - 1) {
 			//사용자가 선택한 역이 종점일 때
 			user2.userset.add(subway.line1.get(user2_check1-1).code);
-			user2_check1 = user2_check1 - 1;
+			//user2_check1 = user2_check1 - 1;
 		}
 		else {
 			//사용자가 선택한 역이 1호선에 있고 종점이 아닐 때
 			user2.userset.add(subway.line1.get(user2_check1+1).code);
 			user2.userset.add(subway.line1.get(user2_check1-1).code);
 			//이 때는 앞으로 가도 되고 뒤로 가도 되고 일단 앞으로 가자.
-				user2_check1 = user2_check1 - 1;
+			//user2_check1 = user2_check1 - 1;
 		}
 		//System.out.println("2의 두번째 첵원" + user2_check1);
 		
@@ -165,24 +182,24 @@ public class Main {
 			}
 		else if(user2_check2 < 0) {
 			user2.userset.add(subway.line2.get(user2_check2+1).code);
-			user2_check2 = user2_check2 - 1;
+			//user2_check2 = user2_check2 - 1;
 		}
 		else if(user2_check2 == 0) {
 			//사용자가 선택한 역이 종점일 때
 			user2.userset.add(subway.line2.get(user2_check2+1).code);
-			user2_check2 = user2_check2 - 1;
+			//user2_check2 = user2_check2 - 1;
 		}
 		else if(user2_check2+1 == subway.line2.size() - 1) {
 			//사용자가 선택한 역이 종점일 때
 			user2.userset.add(subway.line2.get(user2_check2-1).code);
-			user2_check2 = user2_check2 - 1;
+			//user2_check2 = user2_check2 - 1;
 		}
 		else {
 			//사용자가 선택한 역이 1호선에 있고 종점이 아닐 때
 			user2.userset.add(subway.line2.get(user2_check2+1).code);
 			user2.userset.add(subway.line2.get(user2_check2-1).code);
 			//이 때는 앞으로 가도 되고 뒤로 가도 되고 일단 앞으로 가자.
-				user2_check2 = user2_check2 - 1;
+			//user2_check2 = user2_check2 - 1;
 		}
 		//System.out.println("2의 두번째 첵투" + user2_check2);
 		
@@ -212,6 +229,85 @@ public class Main {
 		
 		System.out.println("\n----------------2칸 늘렸을 때-------------\n");
 		System.out.println("\n유저1확인");
+		
+
+		
+		//인덱스 하나 앞으로 뺀게 있는지 없는지 검사
+		//for(int i = 0 ; i < subway.line1.size() ; i++){
+//			if(!(user1_check1 - 2 < 0)) {
+//				for(int i=0; i<subway.line1.size();i++){
+//					if(subway.line1.get(i).name.contains(subway.line1.get(user1_check1-2).name)) {
+//						user1.userset.add(subway.line1.get(user1_check1-2).code);
+//					}
+//				}
+//			}
+			
+
+		//}
+		//for(int i = 0 ; i < subway.line2.size() ; i++){
+//			if(!(user1_check1 - 2 < 0)) {
+//				for(int i=0; i<subway.line2.size();i++){
+//					if(subway.line2.get(i).name.contains(subway.line1.get(user1_check1-2).name)) {
+//						String testname = subway.line1.get(user1_check1-2).name;
+//						int testindex = subway.line2.indexOf(testname);
+//						user1.userset.add(subway.line2.get(testindex).code);
+//				}
+//			}
+//		}
+		//}
+		//for(int i = 0 ; i < subway.line1.size() ; i++){
+//			if(user1_check1 + 2 < subway.line1.size()) {
+//				for(int i=0; i<subway.line1.size();i++){
+//					if(subway.line1.get(i).name.contains(subway.line1.get(user1_check1+2).name)) {
+//					user1.userset.add(subway.line1.get(user1_check1+2).code);
+//				}
+//			}
+//		}
+			
+			
+		//}
+		//for(int i = 0 ; i < subway.line2.size() ; i++){
+			//if(user1_check1 + 2 < subway.line1.size()) {
+//				for(int i=0; i<subway.line2.size();i++){
+//					if(subway.line2.get(i).name.contains(subway.line1.get(user1_check1+2).name)) {
+//						String testname = subway.line1.get(user1_check1+2).name;
+//						System.out.println(testname);
+//						int testindex = subway.line2.indexOf(testname);
+//						System.out.println(testindex);
+//						//user1.userset.add(subway.line2.get(testindex).code);
+//					}
+//				}
+
+		//}
+		
+		
+//		for(int i = 0 ; i < subway.line1.size() ; i++){
+//			if(user1_check1 == subway.line1.get(i).code) {
+//				if(user1_check1 == -1000) {
+//					
+//				}
+//				else if(user1_check1 < 0) {
+//					user1.userset.add(subway.line1.get(user1_check1+3).code);
+//					user1_check1 = user1_check1 - 1;
+//				}
+//				else if(user1_check1 == 0) {
+//					user1.userset.add(subway.line1.get(user1_check1+3).code);
+//					user1_check1 = user1_check1 - 1;
+//				}
+//			
+//				else if(user1_check1 == subway.line1.size() - 1) {
+//					user1.userset.add(subway.line1.get(user1_check1-1).code);
+//					user1_check1 = user1_check1 - 1;
+//				}
+//				else {
+//					user1.userset.add(subway.line1.get(user1_check1+3).code);
+//					user1.userset.add(subway.line1.get(user1_check1-1).code);
+//					user1_check1 = user1_check1 - 1;
+//				}
+//			}
+//		}
+		
+		
 		if(user1_check1 == -1000) {
 			
 		}
@@ -235,80 +331,90 @@ public class Main {
 		}
 		
 		
-		if(user1_check2 == -1000) {
-			
-		}
-		else if(user1_check2 < 0) {
-			user1.userset.add(subway.line2.get(user1_check2+3).code);
-			user1_check2 = user1_check2 - 1;
-		}
-		else if(user1_check2 == 0) {
-			user1.userset.add(subway.line2.get(user1_check2+3).code);
-			user1_check2 = user1_check2 - 1;
-		}
-		else if(user1_check2 == subway.line2.size() - 1) {
-			user1.userset.add(subway.line2.get(user1_check2-1).code);
-			user1_check2 = user1_check2 - 1;
-		}
-		else {
-			user1.userset.add(subway.line2.get(user1_check2+3).code);
-			user1.userset.add(subway.line2.get(user1_check2-1).code);
-			user1_check2 = user1_check2 - 1;
-		}	
+		
+//		for(int i = 0 ; i < subway.line2.size() ; i++){
+//			if(user1_check2 == subway.line2.get(i).code) {
+				if(user1_check2 == -1000) {
+					
+				}
+				else if(user1_check2 < 0) {
+					user1.userset.add(subway.line2.get(user1_check2+3).code);
+					user1_check2 = user1_check2 - 1;
+				}
+				else if(user1_check2 == 0) {
+					user1.userset.add(subway.line2.get(user1_check2+3).code);
+					user1_check2 = user1_check2 - 1;
+				}
+				else if(user1_check2 == subway.line2.size() - 1) {
+					user1.userset.add(subway.line2.get(user1_check2-1).code);
+					user1_check2 = user1_check2 - 1;
+				}
+				else {
+					user1.userset.add(subway.line2.get(user1_check2+3).code);
+					user1.userset.add(subway.line2.get(user1_check2-1).code);
+					user1_check2 = user1_check2 - 1;
+				}	
+			//}
+//		}
+		
 		
 		for(int i = 0; i < user1.userset.size(); i++) {
-            System.out.print(user1.userset.get(i)+"\t");
-        }
-		
-		
-		
+			System.out.print(user1.userset.get(i)+"\t");
+		}
+				
 		
 		System.out.println("\n유저2확인");
-		if(user2_check1 == -1000) {
-			
-		}
-		else if(user2_check1 < 0) {
-			user2.userset.add(subway.line1.get(user2_check1+3).code);
-			user2_check1 = user2_check1 - 1;
-		}
-		else if(user2_check1 == 0) {
-			user2.userset.add(subway.line1.get(user2_check1+3).code);
-			user2_check1 = user2_check1 - 1;
-		}
-		else if(user2_check1+1 == subway.line1.size() - 1) {
-			user2.userset.add(subway.line1.get(user2_check1-1).code);
-			user2_check1 = user2_check1 - 1;
-		}
-		else {
-			user2.userset.add(subway.line1.get(user2_check1+3).code);
-			user2.userset.add(subway.line1.get(user2_check1-1).code);
-			user2_check1 = user2_check1 - 1;
-		}
+//		for(int i = 0 ; i < subway.line1.size() ; i++){
+//			if(user2_check1 == subway.line1.get(i).code) {
+				if(user2_check1 == -1000) {
+					
+				}
+				else if(user2_check1 < 0) {
+					user2.userset.add(subway.line1.get(user2_check1+3).code);
+					user2_check1 = user2_check1 - 1;
+				}
+				else if(user2_check1 == 0) {
+					user2.userset.add(subway.line1.get(user2_check1+3).code);
+					user2_check1 = user2_check1 - 1;
+				}
+				else if(user2_check1+1 == subway.line1.size() - 1) {
+					user2.userset.add(subway.line1.get(user2_check1-1).code);
+					user2_check1 = user2_check1 - 1;
+				}
+				else {
+					user2.userset.add(subway.line1.get(user2_check1+3).code);
+					user2.userset.add(subway.line1.get(user2_check1-1).code);
+					user2_check1 = user2_check1 - 1;
+				}
+//			}
+//		}
 		
-		
-		if(user2_check2 == -1000) {
-			
-		}
-		else if(user2_check2 < 0) {
-			user2.userset.add(subway.line2.get(user2_check2+3).code);
-			user2_check2 = user2_check2 - 1;
-		}
-		else if(user2_check2 == 0) {
-			user2.userset.add(subway.line2.get(user2_check2+3).code);
-			user2_check2 = user2_check2 - 1;
-		}
-		else if(user2_check2+1 == subway.line2.size() - 1) {
-			user2.userset.add(subway.line2.get(user2_check2-1).code);
-			user2_check2 = user2_check2 - 1;
-		}
-		else {
-			user2.userset.add(subway.line2.get(user2_check2+3).code);
-			//System.out.println(subway.line2.get(user2_check2+3).code + "찍어보자");
-			user2.userset.add(subway.line2.get(user2_check2-1).code);
-			//System.out.println(subway.line2.get(user2_check2-1).code + "찍어보자");
-			user2_check2 = user2_check2 - 1;
-		}
-	
+//		for(int i = 0 ; i < subway.line2.size() ; i++){
+//			if(user2_check2 == subway.line2.get(i).code) {
+				if(user2_check2 == -1000) {
+					
+				}
+				else if(user2_check2 < 0) {
+					user2.userset.add(subway.line2.get(user2_check2+3).code);
+					user2_check2 = user2_check2 - 1;
+				}
+				else if(user2_check2 == 0) {
+					user2.userset.add(subway.line2.get(user2_check2+3).code);
+					user2_check2 = user2_check2 - 1;
+				}
+				else if(user2_check2+1 == subway.line2.size() - 1) {
+					user2.userset.add(subway.line2.get(user2_check2-1).code);
+					user2_check2 = user2_check2 - 1;
+				}
+				else {
+					user2.userset.add(subway.line2.get(user2_check2+3).code);
+					//System.out.println(subway.line2.get(user2_check2+3).code + "찍어보자");
+					user2.userset.add(subway.line2.get(user2_check2-1).code);
+					//System.out.println(subway.line2.get(user2_check2-1).code + "찍어보자");
+					user2_check2 = user2_check2 - 1;
+				}
+//			}
+//		}
 		for(int i = 0; i < user2.userset.size(); i++) {
             System.out.print(user2.userset.get(i)+"\t");
         }
